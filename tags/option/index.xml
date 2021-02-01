@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>option on Frank Gao</title>
+    <link>https://gtxistxgao.github.io/tags/option/</link>
+    <description>Recent content in option on Frank Gao</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    
+	<atom:link href="https://gtxistxgao.github.io/tags/option/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>如何理解期权中的call和put</title>
+      <link>https://gtxistxgao.github.io/patterns/stockmarket/options/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://gtxistxgao.github.io/patterns/stockmarket/options/</guid>
+      <description>Date: 01/27/2021 Frank Gao     Call Put     Long 出钱 - 某个时间前你可以以某个价格买某个股票 出钱 - 某个时间前别人可以以某个价格买你的股票   Short 拿钱 - 某个时间前你可以以某个价格卖某个股票 拿钱 - 某个时间前你可以以某个价格买别人的股票    案例分析：假设现在某股票现价100 Long Call  如果我买1张在30天后的call。交割时价格C 买了S的call，价格P。盈利 (C - S - P)*100  如果我买90元的call，价格肯定超过10元，假设12元。我付出的成本是1200。到了30天，我以90元买了100股。我的总支出是1200 + 90 * 100 = 10200。可以想象我就是在未来用102买了100股。  假如股价102，那我就不亏不赚  假如股票101，那我就亏 101 * 100 - 10200 = -100 假如股价103，那我就赚 103*100 - 10200 = 100   如果我买110元的call，价格会很便宜，比如1元。那我付出的成本就是100。到了30天，我以110元的价格买了100股。我的总支出是110 * 100 + 100 = 11100。可以想象我就是在未来用111买了100股  假如股价111，那我不亏不赚 假如股价110，那我亏 110*100 - 11100 = -100 假如股价112，那我赚 112*100 - 11100 = 100        Long Put  如果我买1张30天后的put。交割价格C 买了S价格的put，价格P。盈利 (S - C - P)*100  如果我买90元的put，价格8元。到了30天后，我必须买到100股然后以90元卖给别人。我能拿到的钱是90 * 100 = 9000  假如股价82，那我就收支平衡。支出是8*100 + 82 * 100 = 9000，收入是9000 假如股价81，那我就赚了。盈利9000 - 800 - 81*100 = 100。所以我的最大盈利是8200，真是个烂策略 假如股价83，那我就亏了。亏了83*100 + 800 - 9000 = 100   如果我买110元的put，价格20。到了30天后，我用110元卖了100股股票。能拿到的钱是110*100 = 11000  假如股价90。收支平衡。支出是20 * 100 + 90 * 100 = 11000。收入是11000 假如股价89。那就赚了。盈利 11000 - 2000 - 8900 = 100 假如股价91，那就亏了。亏9100 + 2000 - 11000 = 100      Short Covered Call  如果我卖了1张30天的call。当前价格C 卖了S价格的call，价格P。盈利 (S+P-C)*100  如果我卖了90元的call。价格25。那我可以拿到的钱是2500。买股票用了10000。  假如股价90。那别人用9000来买我的这100股。我总共收到9000+2500=11500。赚了1500 假如股价89。那别人就不会来买我的股票了。我拿到2500但是股价也变成了8900。所以是2500 + 8900 = 11400。赚了11400 假如股价75。2500+7500=10000。不亏不赚 iv.</description>
+    </item>
+    
+    <item>
+      <title>期权交易中的各种策略</title>
+      <link>https://gtxistxgao.github.io/patterns/stockmarket/option_strategy/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://gtxistxgao.github.io/patterns/stockmarket/option_strategy/</guid>
+      <description>Date: 01/31/2021 Frank Gao 学习笔记 https://www.investopedia.com/trading/options-strategies/
+Short covered call 首先购买100股某股票，假设价格是100元每股。这时候选择一个call的strike价格比如102元。这个call的价格假设是2元。这时用已经购买的股票作为保障，就可以卖一个covered call。别人会以200元的价格购买你的call。
+ 假设股票涨到了101。别人肯定不会行权，那不算股票最大的盈利就是200元。 假设股票开始跌了，但是只跌到98元。这时候别人肯定不会行权。虽然股票的价格上我们跌了200，但是因为别人给了200。所以等于没赚没赔。 假设股票跌到了97元。那等于亏了300 - 200 = 100元。这也比自己买一百股亏300元要好。  总结就是Short covered call可以用来对冲股票小跌的风险。
+   pros cons     马上拿到钱 最多盈利也固定了   相当于买股票的价格降了call价格，等于打折了     Married Put 首先会购买100股某股票。然后同时购买一个put来保护大跌的情况。
+Bull Call Spread 不买正股。在X价位买一个call的同时在X+Y的价位卖一个call。这两个call的过期时间相同。这样在大涨的时候就能盈利。
+Bear Put Spread 不买正股。在X价位买一个put然后在X-Y价位卖一个put。这两个put的过期时间相同。这样股票大跌的时候就能盈利。
+Protective Collar 这是在你有一百股的时候，比如股价cost是100刀。买一个95的put的同时卖一个105的call。这样可以保证股价就算大跌，损失也是稳定的。股价要是小涨，盈利也是有封顶的。这个策略的好处是大大的降低了风险，同时也保护了这100股，所以叫Protective Collar
+Long Straddle 不买正股。同时买入call和put在同一个strike price和同一个expire date。这是在预判价格会要么大涨要么大跌。
+Long Strangle 不买正股。在低位买一个put，在高位买一个call。这样买option的成本会低但是盈利平衡点也会扩大。只有在股票大涨或者大跌的时候才有可能盈利。</description>
+    </item>
+    
+  </channel>
+</rss>
